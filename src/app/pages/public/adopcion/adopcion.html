@@ -1,0 +1,26 @@
+<div class="adopcion-container">
+  <h1>Mascotas en Adopción</h1>
+  
+  <div class="mascotas-grid" *ngIf="mascotas.length > 0">
+    <div class="mascota-card" *ngFor="let mascota of mascotas">
+      <div class="mascota-info">
+        <h3>{{ mascota.name }}</h3>
+        <p><strong>Especie:</strong> {{ mascota.species }}</p>
+        <p><strong>Raza:</strong> {{ mascota.breed }}</p>
+        <p><strong>Edad:</strong> {{ mascota.age }} años</p>
+        <p><strong>Refugio:</strong> {{ mascota.refugio || 'Sin refugio' }}</p>
+        <p><strong>Contacto:</strong> {{ mascota.contacto || 'No disponible' }}</p>
+        <p class="descripcion">{{ mascota.description }}</p>
+        <span class="estado disponible">{{ mascota.status }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading" *ngIf="cargando">
+    <p>Cargando mascotas...</p>
+  </div>
+  
+  <div class="error" *ngIf="error">
+    <p>Error: {{ error }}</p>
+  </div>
+</div>

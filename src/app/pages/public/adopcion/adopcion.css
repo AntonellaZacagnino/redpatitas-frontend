@@ -1,0 +1,79 @@
+.adopcion-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.mascotas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.mascota-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.mascota-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mascota-info h3 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.mascota-info p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.descripcion {
+  font-style: italic;
+  color: #666;
+  margin: 15px 0;
+  line-height: 1.4;
+}
+
+.estado {
+  display: block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 15px auto 0;
+  width: fit-content;
+}
+
+.estado.disponible {
+  background-color: #27ae60;
+  color: white;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+}
+
+.error {
+  color: #e74c3c;
+  background-color: #fdf2f2;
+  border-radius: 10px;
+  margin: 20px 0;
+}
