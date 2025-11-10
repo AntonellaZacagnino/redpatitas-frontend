@@ -1,0 +1,119 @@
+<div class="crud-container">
+  <div class="header">
+    <h1>Administrar Mascotas Perdidas</h1>
+    <a routerLink="/admin/dashboard" class="btn-volver">
+      Volver
+    </a>
+  </div>
+  
+  <div class="actions-bar">
+    <button class="btn btn-primary" (click)="mostrarFormulario = true">
+      <i class="bi bi-plus"></i> Nueva Mascota Perdida
+    </button>
+  </div>
+
+  <!-- Formulario Nueva/Editar Mascota -->
+  <div class="form-modal" *ngIf="mostrarFormulario">
+    <div class="form-card">
+      <h3>{{ editando ? 'Editar' : 'Nueva' }} Mascota Perdida</h3>
+      
+      <form #mascotaFormRef="ngForm" (ngSubmit)="guardarMascota()">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" [(ngModel)]="mascotaForm.name" name="name" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Especie:</label>
+          <select [(ngModel)]="mascotaForm.species" name="species" class="form-control" required>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Raza:</label>
+          <input type="text" [(ngModel)]="mascotaForm.breed" name="breed" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label>Edad:</label>
+          <input type="number" [(ngModel)]="mascotaForm.age" name="age" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Descripción:</label>
+          <textarea [(ngModel)]="mascotaForm.descripcion" name="descripcion" class="form-control" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Ubicación donde se perdió:</label>
+          <input type="text" [(ngModel)]="mascotaForm.ubicacionPerdida" name="ubicacionPerdida" class="form-control" placeholder="Intersección de calles">
+        </div>
+        
+        <div class="form-group">
+          <label>Fecha cuando se perdió:</label>
+          <input type="date" [(ngModel)]="mascotaForm.fechaPerdida" name="fechaPerdida" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Contacto de reporte:</label>
+          <input type="text" [(ngModel)]="mascotaForm.contactoReporte" name="contactoReporte" class="form-control" placeholder="WhatsApp" required>
+        </div>
+        
+
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check"></i> Guardar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelarFormulario()">
+            <i class="bi bi-x"></i> Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Lista de Mascotas -->
+  <div class="mascotas-table">
+    <div *ngIf="mascotas.length === 0" style="text-align: center; padding: 20px; color: #666;">
+      No hay mascotas perdidas registradas
+    </div>
+    
+    <table class="table" *ngIf="mascotas.length > 0">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Ubicación</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotas">
+          <td>{{ mascota.name }}</td>
+          <td>{{ mascota.species }}</td>
+          <td>{{ mascota.breed }}</td>
+          <td>{{ mascota.age }} años</td>
+          <td>{{ mascota.ubicacionPerdida || 'Sin ubicación' }}</td>
+          <td>
+            <span class="badge badge-danger">{{ mascota.status }}</span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary" (click)="editarMascota(mascota)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="eliminarMascota(mascota._id!)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
