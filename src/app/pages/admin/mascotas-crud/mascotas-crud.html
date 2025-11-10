@@ -1,0 +1,120 @@
+<div class="crud-container">
+  <div class="header">
+    <h1>Administrar Mascotas en Adopción</h1>
+    <a routerLink="/admin/dashboard" class="btn-volver">
+      Volver
+    </a>
+  </div>
+  
+  <div class="actions-bar">
+    <button class="btn btn-primary" (click)="mostrarFormulario = true">
+      <i class="bi bi-plus"></i> Nueva Mascota
+    </button>
+  </div>
+  
+  <!-- Formulario Nueva/Editar Mascota -->
+  <div class="form-modal" *ngIf="mostrarFormulario">
+    <div class="form-card">
+      <h3>{{ editando ? 'Editar' : 'Nueva' }} Mascota</h3>
+      
+      <form (ngSubmit)="guardarMascota()">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" [(ngModel)]="mascotaForm.name" name="name" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Especie:</label>
+          <select [(ngModel)]="mascotaForm.species" name="species" class="form-control" required>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Raza:</label>
+          <input type="text" [(ngModel)]="mascotaForm.breed" name="breed" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label>Edad:</label>
+          <input type="number" [(ngModel)]="mascotaForm.age" name="age" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Descripción:</label>
+          <textarea [(ngModel)]="mascotaForm.description" name="description" class="form-control" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Refugio:</label>
+          <input type="text" [(ngModel)]="mascotaForm.refugio" name="refugio" class="form-control" placeholder="Nombre del refugio">
+        </div>
+        
+        <div class="form-group">
+          <label>Contacto:</label>
+          <input type="text" [(ngModel)]="mascotaForm.contacto" name="contacto" class="form-control" placeholder="WhatsApp">
+        </div>
+        
+        <div class="form-group">
+          <label>Estado:</label>
+          <select [(ngModel)]="mascotaForm.status" name="status" class="form-control" required>
+            <option value="Disponible">Disponible</option>
+            <option value="Adoptado">Adoptado</option>
+          </select>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check"></i> Guardar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelarFormulario()">
+            <i class="bi bi-x"></i> Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Lista de Mascotas -->
+  <div class="mascotas-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Refugio</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotas">
+          <td>{{ mascota.name }}</td>
+          <td>{{ mascota.species }}</td>
+          <td>{{ mascota.breed }}</td>
+          <td>{{ mascota.age }} años</td>
+          <td>{{ mascota.refugio || 'Sin refugio' }}</td>
+          <td>
+            <span class="badge" [ngClass]="{
+              'badge-success': mascota.status === 'Disponible',
+              'badge-warning': mascota.status === 'Perdido',
+              'badge-info': mascota.status === 'Adoptado'
+            }">{{ mascota.status }}</span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary" (click)="editarMascota(mascota)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="eliminarMascota(mascota._id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
