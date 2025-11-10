@@ -1,59 +1,81 @@
-# ProyectoRedpatitas
+# RedPatitas Frontend 🐾
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+> Aplicación Angular para adopción de mascotas
 
-## Development server
-
-To start a local development server, run:
+## 🚀 Instalación y Ejecución
 
 ```bash
-ng serve
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo (con proxy al backend)
+npm start
+
+# Construir para producción
+npm run build
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📱 Características
 
-## Code scaffolding
+### Páginas Públicas
+- **Home** - Página principal con estadísticas
+- **Adopción** - Mascotas disponibles para adoptar
+- **Mascotas Perdidas** - Reportes de mascotas perdidas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Panel Administrativo
+- **Login** - Autenticación (admin@redpatitas.com / 123456)
+- **Dashboard** - Panel de control
+- **CRUD Adopción** - Gestión de mascotas en adopción
+- **CRUD Perdidas** - Gestión de reportes de mascotas perdidas
 
-```bash
-ng generate component component-name
+## 🏗️ Arquitectura Angular
+
+### **📁 Servicios (src/app/services/)**
+- `adopcion.service.ts` - Comunicación con API adopción
+- `perdidas.service.ts` - Comunicación con API perdidas
+
+### **🎮 Componentes (src/app/components/)**
+- `header.component.ts` - Cabecera de la aplicación
+- `navbar.component.ts` - Navegación principal
+- `footer.component.ts` - Pie de página
+
+### **📄 Páginas (src/app/pages/)**
+- `public/` - Páginas públicas (Home, Adopción, Perdidas)
+- `admin/` - Panel administrativo (Login, Dashboard, CRUD)
+
+### **🛡️ Guards (src/app/guards/)**
+- `auth.guard.ts` - Protección de rutas administrativas
+
+## 🛠️ Stack Tecnológico
+
+- **Angular 20** - Framework frontend
+- **Bootstrap 5** - Estilos y componentes
+- **TypeScript** - Lenguaje de programación
+- **Template-driven Forms** - Formularios
+
+## 🔧 Configuración
+
+- **Puerto:** 4200
+- **Backend API:** http://localhost:3000 (via proxy)
+- **Proxy:** Configurado en `proxy.conf.json`
+
+## 📡 Conexión con Backend
+
+El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy configuration.
+
+## 🔗 Rutas Principales
+
+### **Públicas**
+```
+/                    # Home
+/adopcion           # Mascotas en adopción
+/mascotas-perdidas  # Reportes de perdidas
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### **Administrativas**
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
+/admin/login        # Login administrador
+/admin/dashboard    # Panel de control
+/admin/mascotas     # CRUD mascotas adopción
+/admin/perdidas     # CRUD mascotas perdidas
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
