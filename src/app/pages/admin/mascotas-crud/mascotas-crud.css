@@ -46,8 +46,12 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #e74c3c;
+  background-color: #907efd;
   color: white;
+}
+
+.btn-primary:hover {
+  background-color: #6558b3;
 }
 
 .btn-success {
@@ -61,9 +65,14 @@ h1 {
 }
 
 .btn-outline-primary {
-  border: 1px solid #3498db;
-  color: #3498db;
+  border: 1px solid #907efd;
+  color: #907efd;
   background: transparent;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #907efd;
 }
 
 .btn-outline-danger {
@@ -71,6 +80,12 @@ h1 {
   color: #e74c3c;
   background: transparent;
 }
+
+.btn-outline-danger:hover {
+  color: white;
+  background-color: #e74c3c;
+}
+
 
 .btn-sm {
   padding: 5px 10px;

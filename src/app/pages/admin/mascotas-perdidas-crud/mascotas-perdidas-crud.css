@@ -14,6 +14,7 @@
 h1 {
   color: #2c3e50;
   margin: 0;
+  font-weight: bold;
 }
 
 .btn-volver {
@@ -105,8 +106,12 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #e74c3c;
+  background-color: #907efd;
   color: white;
+}
+
+.btn-primary:hover {
+  background-color: #6558b3;
 }
 
 .btn-success {
@@ -125,10 +130,20 @@ h1 {
   background: transparent;
 }
 
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #3498db;
+}
+
 .btn-outline-danger {
   border: 1px solid #e74c3c;
   color: #e74c3c;
   background: transparent;
+}
+
+.btn-outline-danger:hover {
+  color: white;
+  background-color: #e74c3c;
 }
 
 .btn-sm {

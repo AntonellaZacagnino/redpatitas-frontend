@@ -5,12 +5,14 @@
     <div class="mascota-card" *ngFor="let mascota of mascotasPerdidas">
       <div class="mascota-info">
         <h3>{{ mascota.name }}</h3>
-        <p><strong>Especie:</strong> {{ mascota.species }}</p>
-        <p><strong>Raza:</strong> {{ mascota.breed }}</p>
-        <p><strong>Edad:</strong> {{ mascota.age }} años</p>
-        <p><strong>Se perdió por:</strong> {{ mascota.ubicacionPerdida }}</p>
-        <p><strong>Contacto:</strong> {{ mascota.contactoReporte }}</p>
-        <p class="descripcion">{{ mascota.descripcion }}</p>
+        <div>
+          <p><strong>Especie:</strong> {{ mascota.species }}</p>
+          <p><strong>Raza:</strong> {{ mascota.breed }}</p>
+          <p><strong>Edad:</strong> {{ mascota.age }} años</p>
+          <p><strong>Se perdió por:</strong> {{ mascota.ubicacionPerdida }}</p>
+          <p><strong>Contacto:</strong> {{ mascota.contactoReporte }}</p>
+          <p class="descripcion">{{ mascota.descripcion }}</p>
+        </div>
         <a [href]="'https://wa.me/' + mascota.contactoReporte" target="_blank" class="btn btn-warning">
           <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
         </a>

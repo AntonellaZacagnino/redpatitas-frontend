@@ -124,20 +124,26 @@ body {
     gap: 20px;
     font-size: 0.9rem;
     justify-content: center;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .header-tags .tag {
     display: flex;
     align-items: center;
+    flex-direction: column;
     color: var(--light-text-color);
     background-color: #FFFFFF;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border-radius: 20px;
     font-weight: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border: 1px solid #F0F0F0;
+    max-width: 280px;
+}
+
+.header-tags .tag h5{
+    font-weight: bold;
 }
 
 .header-tags .tag i {

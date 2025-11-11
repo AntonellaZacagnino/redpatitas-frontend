@@ -7,6 +7,7 @@
 h1 {
   color: #2c3e50;
   text-align: center;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -41,8 +42,9 @@ p {
 }
 
 .card h3 {
-  color: #e74c3c;
+  color: #907efd;
   margin-bottom: 15px;
+  font-weight: bold;
 }
 
 .card p {
@@ -64,12 +66,12 @@ p {
 }
 
 .btn-primary {
-  background-color: #e74c3c;
+  background-color: #907efd;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #c0392b;
+  background-color: #6558b3;
 }
 
 .btn-secondary {
