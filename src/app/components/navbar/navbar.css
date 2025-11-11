@@ -38,15 +38,15 @@ ul {
 
 .navbar .btn{
     color: white;
-    background-color: #634affff;
+    background-color: #907efd;
     font-weight: 500;
     margin-right: 1vw;
 }
 
 .navbar .btn:hover{
-    border: 2px solid #634affff;
+    border: 2px solid #907efd;
     background-color: transparent;
-    color: #634affff;
+    color: #907efd;
 ;
 }
 

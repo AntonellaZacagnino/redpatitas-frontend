@@ -39,25 +39,15 @@
 }
 
 .btn-primary {
-  background-color: #e74c3c;
+  background-color: white;
   border: none;
-  color: white;
+  color: #667eea;
 }
 
 .btn-primary:hover {
-  background-color: #c0392b;
+  background-color: #667eea;
   transform: translateY(-2px);
-}
-
-.btn-outline-secondary {
-  border: 2px solid white;
   color: white;
-  background: transparent;
-}
-
-.btn-outline-secondary:hover {
-  background-color: white;
-  color: #667eea;
 }
 
 /* Sección Estadísticas */
@@ -79,7 +69,7 @@
 }
 
 .stat-card i {
-  color: #e74c3c;
+  color: #907efd;
   font-size: 1.2rem;
 }
 

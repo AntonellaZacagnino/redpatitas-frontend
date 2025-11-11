@@ -8,6 +8,7 @@ h1 {
   text-align: center;
   color: #2c3e50;
   margin-bottom: 30px;
+  font-weight: bold;
 }
 
 .descripcion {
@@ -46,9 +47,11 @@ h1 {
 }
 
 .mascota-info h3 {
-  color: #e74c3c;
+  text-transform: capitalize;
+  color: #907efd;
   margin-bottom: 15px;
   font-size: 1.5em;
+  font-weight: bold;
 }
 
 .mascota-info p {
