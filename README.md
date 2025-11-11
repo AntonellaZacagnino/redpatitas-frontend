@@ -9,11 +9,22 @@
 npm install
 
 # Ejecutar en desarrollo (con proxy al backend)
-npm start
+ng serve
 
 # Construir para producción
-npm run build
+ng build
 ```
+
+## 🔐 Inicio Panel Administrador
+
+Para probar las funcionalidades CRUD, usar las siguientes credenciales:
+
+```
+Email: admin@redpatitas.com
+Password: 123456
+```
+
+**Acceso:** http://localhost:4200/admin/login
 
 ## 📱 Características
 
@@ -61,7 +72,7 @@ npm run build
 
 ## 📡 Conexión con Backend
 
-El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy configuration.
+El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy.
 
 ## 🔗 Rutas Principales
 
@@ -79,3 +90,9 @@ El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy
 /admin/mascotas     # CRUD mascotas adopción
 /admin/perdidas     # CRUD mascotas perdidas
 ```
+
+## 🔗 Equipo de desarrollo MVPP (Muy viernes para programar)
+Zacagnino Antonella - Reverol Gerarlis - Salva ivan - Singuri Roberto.
+
+## 🔗 TP INTEGRADOR - DESASRROLLO WEB (BACKEND - FRONTEND) IFTS11 2025
+Zammataro Gustavo - Balbuena Federico
