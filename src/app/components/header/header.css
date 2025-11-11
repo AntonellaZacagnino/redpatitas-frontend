@@ -162,6 +162,17 @@ body {
     padding: 20px;
 }
 
+.header-logo img {
+  width: 200px;
+  height: 70px;
+  position: absolute; 
+  top: 10px;
+  left: 20px;
+  z-index: 1000;
+}
+
+
+
 
 @media (max-width: 1024px) {
     .header-content {
