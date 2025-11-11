@@ -94,5 +94,5 @@ El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy
 ## 🔗 Equipo de desarrollo MVPP (Muy viernes para programar)
 Zacagnino Antonella - Reverol Gerarlis - Salva ivan - Singuri Roberto.
 
-## 🔗 TP INTEGRADOR - DESASRROLLO WEB (BACKEND - FRONTEND) IFTS11 2025
+## 🔗 TP INTEGRADOR - DESARROLLO WEB (BACKEND - FRONTEND) IFTS11 2025
 Zammataro Gustavo - Balbuena Federico
