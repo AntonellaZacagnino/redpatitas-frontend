@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.css"],
+  "sourcesContent": ["/* Layout para footer sticky */\r\nhtml, body {\r\n  height: 100%;\r\n  margin: 0;\r\n}\r\n\r\napp-root {\r\n  display: flex;\r\n  flex-direction: column;\r\n  min-height: 100vh;\r\n}\r\n\r\nmain {\r\n  flex: 1;\r\n}"],
+  "mappings": ";AACA;AAAM;AACJ,UAAQ;AACR,UAAQ;AACV;AAEA;AACE,WAAS;AACT,kBAAgB;AAChB,cAAY;AACd;AAEA;AACE,QAAM;AACR;",
+  "names": []
+}

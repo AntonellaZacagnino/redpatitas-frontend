@@ -62,7 +62,12 @@
           <input type="text" [(ngModel)]="mascotaForm.contactoReporte" name="contactoReporte" class="form-control" placeholder="WhatsApp" required>
         </div>
         
-
+        <div class="form-group">
+          <label>Estado:</label>
+          <select [(ngModel)]="mascotaForm.status" name="status" class="form-control" required>
+            <option value="Perdido">Perdido</option>
+          </select>
+        </div>
         
         <div class="form-actions">
           <button type="submit" class="btn btn-success" [disabled]="!formularioCompleto()">

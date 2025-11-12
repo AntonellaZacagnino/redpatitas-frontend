@@ -2,7 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AdopcionService } from '../../../services/adopcion.service';
+import { AdopcionService, MascotaAdopcion } from '../../../services/adopcion.service';
+
+/**
+ * Componente CRUD para gestionar mascotas en adopción
+ * Permite crear, leer, actualizar y eliminar mascotas disponibles para adopción
+ * Usado en: Panel administrativo /admin/mascotas
+*/
 
 @Component({
   selector: 'app-mascotas-crud',
@@ -13,11 +19,14 @@ import { AdopcionService } from '../../../services/adopcion.service';
 export class MascotasCrud implements OnInit {
   private adopcionService = inject(AdopcionService);
   
-  mascotas: any[] = [];
-  mostrarFormulario = false;
-  editando = false;
+  // === PROPIEDADES DEL COMPONENTE ===
+  mascotas: MascotaAdopcion[] = [];        // Lista de mascotas cargadas desde la API
+  mostrarFormulario = false;               // Controla la visibilidad del formulario
+  editando = false;                        // Indica si estamos editando (true) o creando (false)
   
-  mascotaForm: any = {
+  // === FORMULARIO DE MASCOTA ===
+  // Estructura que coincide con la interfaz MascotaAdopcion
+  mascotaForm: MascotaAdopcion = {
     _id: '',
     name: '',
     species: 'Perro',
@@ -29,9 +38,23 @@ export class MascotasCrud implements OnInit {
     status: 'Disponible'
   };
 
+  // === MÉTODOS DEL CICLO DE VIDA ===
+  
+  /**
+   * Se ejecuta al inicializar el componente
+   * Carga la lista inicial de mascotas
+  */
+
   async ngOnInit() {
     await this.cargarMascotas();
   }
+
+  // === MÉTODOS CRUD ===
+  
+  /**
+   * Carga todas las mascotas desde la API
+   * Actualiza la lista mostrada en la tabla
+  */
 
   async cargarMascotas() {
     try {
@@ -40,6 +63,11 @@ export class MascotasCrud implements OnInit {
       console.error('Error cargando mascotas:', error);
     }
   }
+
+  /**
+   * Guarda una mascota (crear nueva o actualizar existente)
+   * Usa el flag 'editando' para determinar la operación
+  */
 
   async guardarMascota() {
     try {
@@ -58,11 +86,21 @@ export class MascotasCrud implements OnInit {
     }
   }
 
-  editarMascota(mascota: any) {
+  /**
+   * Prepara el formulario para editar una mascota existente
+   * Carga los datos en el formulario y activa el modo edición
+  */
+
+  editarMascota(mascota: MascotaAdopcion) {
     this.mascotaForm = { ...mascota };
     this.editando = true;
     this.mostrarFormulario = true;
   }
+
+  /**
+   * Elimina una mascota del sistema
+   * Solicita confirmación antes de proceder
+  */
 
   async eliminarMascota(id: string) {
     if (confirm('¿Estás seguro de eliminar esta mascota?')) {
@@ -75,15 +113,31 @@ export class MascotasCrud implements OnInit {
     }
   }
 
+  // === MÉTODOS DE VALIDACIÓN Y UTILIDAD ===
+  
+  /**
+   * Valida que todos los campos requeridos estén completos
+   * Retorna true si el formulario es válido para enviar
+  */
+
   formularioCompleto(): boolean {
     return !!
       (this.mascotaForm.name?.trim() &&
        this.mascotaForm.species?.trim() &&
+       this.mascotaForm.breed?.trim() &&
        this.mascotaForm.age &&
+       this.mascotaForm.description?.trim() &&
+       this.mascotaForm.refugio?.trim() &&
+       this.mascotaForm.contacto?.trim() &&
        this.mascotaForm.status?.trim());
-    // Solo validamos campos obligatorios: name, species, age, status
+    // Validamos todos los campos requeridos de la interfaz MascotaAdopcion
   }
 
+  /**
+   * Resetea el formulario y oculta el modal
+   * Vuelve al estado inicial para crear nueva mascota
+  */
+ 
   cancelarFormulario() {
     this.mostrarFormulario = false;
     this.editando = false;

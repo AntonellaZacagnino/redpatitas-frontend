@@ -4,6 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PerdidasService, MascotaPerdida } from '../../../services/perdidas.service';
 
+/**
+ * Componente CRUD para gestionar reportes de mascotas perdidas
+ * Permite crear, leer, actualizar y eliminar reportes de mascotas perdidas
+ * Usado en: Panel administrativo /admin/mascotas-perdidas
+*/
+
 @Component({
   selector: 'app-mascotas-perdidas-crud',
   imports: [CommonModule, FormsModule, RouterModule],
@@ -13,10 +19,13 @@ import { PerdidasService, MascotaPerdida } from '../../../services/perdidas.serv
 export class MascotasPerdidasCrud implements OnInit {
   private perdidasService = inject(PerdidasService);
   
-  mascotas: MascotaPerdida[] = [];
-  mostrarFormulario = false;
-  editando = false;
+  // === PROPIEDADES DEL COMPONENTE ===
+  mascotas: MascotaPerdida[] = [];         // Lista de reportes de mascotas perdidas
+  mostrarFormulario = false;               // Controla la visibilidad del formulario
+  editando = false;                        // Indica si estamos editando (true) o creando (false)
   
+  // === FORMULARIO DE REPORTE ===
+  // Estructura para reportar mascotas perdidas con campos específicos
   mascotaForm: any = {
     _id: '',
     name: '',
@@ -27,12 +36,26 @@ export class MascotasPerdidasCrud implements OnInit {
     ubicacionPerdida: '',
     fechaPerdida: new Date().toISOString().split('T')[0],
     contactoReporte: '',
-    status: 'Perdido'
+    status: 'Perdido'  // Solo puede ser Perdido (lógica simplificada)
   };
+
+  // === MÉTODOS DEL CICLO DE VIDA ===
+  
+  /**
+   * Se ejecuta al inicializar el componente
+   * Carga la lista inicial de reportes de mascotas perdidas
+  */
 
   async ngOnInit() {
     await this.cargarMascotas();
   }
+
+  // === MÉTODOS CRUD ===
+  
+  /**
+   * Carga todos los reportes de mascotas perdidas desde la API
+   * Actualiza la lista mostrada en la tabla
+  */
 
   async cargarMascotas() {
     try {
@@ -42,6 +65,11 @@ export class MascotasPerdidasCrud implements OnInit {
       console.error('Error cargando mascotas perdidas:', error);
     }
   }
+
+  /**
+   * Guarda un reporte de mascota perdida (crear nuevo o actualizar existente)
+   * Usa el flag 'editando' para determinar la operación
+  */
 
   async guardarMascota() {
     console.log('Guardando mascota:', this.mascotaForm);
@@ -65,11 +93,21 @@ export class MascotasPerdidasCrud implements OnInit {
     }
   }
 
+  /**
+   * Prepara el formulario para editar un reporte existente
+   * Carga los datos en el formulario y activa el modo edición
+  */
+
   editarMascota(mascota: MascotaPerdida) {
     this.mascotaForm = { ...mascota };
     this.editando = true;
     this.mostrarFormulario = true;
   }
+
+  /**
+   * Elimina un reporte de mascota perdida del sistema
+   * Solicita confirmación antes de proceder
+  */
 
   async eliminarMascota(id: string) {
     if (confirm('¿Estás seguro de eliminar esta mascota perdida?')) {
@@ -82,6 +120,13 @@ export class MascotasPerdidasCrud implements OnInit {
     }
   }
 
+  // === MÉTODOS DE VALIDACIÓN Y UTILIDAD ===
+  
+  /**
+   * Valida que todos los campos requeridos estén completos
+   * Incluye validación de campos específicos para reportes de pérdidas
+  */
+
   formularioCompleto(): boolean {
     return !!
       (this.mascotaForm.name?.trim() &&
@@ -89,11 +134,16 @@ export class MascotasPerdidasCrud implements OnInit {
        this.mascotaForm.breed?.trim() &&
        this.mascotaForm.age &&
        this.mascotaForm.descripcion?.trim() &&
-       this.mascotaForm.ubicacionPerdida?.trim() &&
-       this.mascotaForm.fechaPerdida &&
-       this.mascotaForm.contactoReporte?.trim());
+       this.mascotaForm.ubicacionPerdida?.trim() &&    // Campo único de perdidas
+       this.mascotaForm.fechaPerdida &&                 // Campo único de perdidas
+       this.mascotaForm.contactoReporte?.trim());       // Campo único de perdidas
   }
 
+  /**
+   * Resetea el formulario y oculta el modal
+   * Vuelve al estado inicial para crear nuevo reporte
+  */
+ 
   cancelarFormulario() {
     this.mostrarFormulario = false;
     this.editando = false;
@@ -107,7 +157,7 @@ export class MascotasPerdidasCrud implements OnInit {
       ubicacionPerdida: '',
       fechaPerdida: new Date().toISOString().split('T')[0],
       contactoReporte: '',
-      status: 'Perdido'
+      status: 'Perdido'  // Solo puede ser Perdido
     };
   }
 }

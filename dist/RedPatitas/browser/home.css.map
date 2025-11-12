@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/public/home/home.css"],
+  "sourcesContent": [".home-container {\r\n  padding: 40px 20px;\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n}"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS,KAAK;AACd,aAAW;AACX,UAAQ,EAAE;AACZ;",
+  "names": []
+}
