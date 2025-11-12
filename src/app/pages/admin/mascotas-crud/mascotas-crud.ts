@@ -75,6 +75,18 @@ export class MascotasCrud implements OnInit {
     }
   }
 
+  formularioCompleto(): boolean {
+    return !!
+      (this.mascotaForm.name?.trim() &&
+       this.mascotaForm.species?.trim() &&
+       this.mascotaForm.breed?.trim() &&
+       this.mascotaForm.age &&
+       this.mascotaForm.description?.trim() &&
+       this.mascotaForm.refugio?.trim() &&
+       this.mascotaForm.contacto?.trim() &&
+       this.mascotaForm.status?.trim());
+  }
+
   cancelarFormulario() {
     this.mostrarFormulario = false;
     this.editando = false;

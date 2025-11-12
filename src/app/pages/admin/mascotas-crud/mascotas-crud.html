@@ -66,7 +66,7 @@
         </div>
         
         <div class="form-actions">
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn btn-success" [disabled]="!formularioCompleto()">
             <i class="bi bi-check"></i> Guardar
           </button>
           <button type="button" class="btn btn-secondary" (click)="cancelarFormulario()">
