@@ -46,9 +46,9 @@ export class MascotasCrud implements OnInit {
       const { _id, ...mascotaData } = this.mascotaForm;
       
       if (this.editando) {
-        await this.adopcionService.put(`/admin/mascotas/${_id}`, mascotaData);
+        await this.adopcionService.put(`/adopcion-mascotas/${_id}`, mascotaData);
       } else {
-        await this.adopcionService.post('/admin/mascotas', mascotaData);
+        await this.adopcionService.post('/adopcion-mascotas', mascotaData);
       }
       
       await this.cargarMascotas();
@@ -67,7 +67,7 @@ export class MascotasCrud implements OnInit {
   async eliminarMascota(id: string) {
     if (confirm('¿Estás seguro de eliminar esta mascota?')) {
       try {
-        await this.adopcionService.delete(`/admin/mascotas/${id}`);
+        await this.adopcionService.delete(`/adopcion-mascotas/${id}`);
         await this.cargarMascotas();
       } catch (error: any) {
         console.error('Error eliminando mascota:', error);
@@ -79,12 +79,9 @@ export class MascotasCrud implements OnInit {
     return !!
       (this.mascotaForm.name?.trim() &&
        this.mascotaForm.species?.trim() &&
-       this.mascotaForm.breed?.trim() &&
        this.mascotaForm.age &&
-       this.mascotaForm.description?.trim() &&
-       this.mascotaForm.refugio?.trim() &&
-       this.mascotaForm.contacto?.trim() &&
        this.mascotaForm.status?.trim());
+    // Solo validamos campos obligatorios: name, species, age, status
   }
 
   cancelarFormulario() {
