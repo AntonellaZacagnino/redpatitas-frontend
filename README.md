@@ -42,7 +42,7 @@ Password: 123456
 ## 🏗️ Arquitectura Angular
 
 ### **📁 Servicios (src/app/services/)**
-- `adopcion.service.ts` - Comunicación con API adopción
+- `adopcion.service.ts` - Comunicación con API adopción (endpoints unificados)
 - `perdidas.service.ts` - Comunicación con API perdidas
 
 ### **🎮 Componentes (src/app/components/)**
@@ -69,10 +69,17 @@ Password: 123456
 - **Puerto:** 4200
 - **Backend API:** http://localhost:3000 (via proxy)
 - **Proxy:** Configurado en `proxy.conf.json`
+- **Endpoints:** Actualizados para usar `/api/adopcion-mascotas` (unificados)
 
 ## 📡 Conexión con Backend
 
 El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy.
+
+### **Endpoints utilizados:**
+```
+GET/POST/PUT/DELETE /api/adopcion-mascotas    # CRUD mascotas adopción
+GET/POST/PUT/DELETE /api/mascotas-perdidas    # CRUD mascotas perdidas
+```
 
 ## 🔗 Rutas Principales
 
