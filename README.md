@@ -49,6 +49,7 @@ Password: 123456
 - `header.component.ts` - Cabecera de la aplicación
 - `navbar.component.ts` - Navegación principal
 - `footer.component.ts` - Pie de página
+- `cuerpo-principal.component.ts` - Contenido principal de la aplicación
 
 ### **📄 Páginas (src/app/pages/)**
 - `public/` - Páginas públicas (Home, Adopción, Perdidas)
@@ -59,7 +60,7 @@ Password: 123456
 
 ## 🛠️ Stack Tecnológico
 
-- **Angular 20** - Framework frontend
+- **Angular 20.3** - Framework frontend
 - **Bootstrap 5** - Estilos y componentes
 - **TypeScript** - Lenguaje de programación
 - **Template-driven Forms** - Formularios
@@ -67,13 +68,12 @@ Password: 123456
 ## 🔧 Configuración
 
 - **Puerto:** 4200
-- **Backend API:** http://localhost:3000 (via proxy)
-- **Proxy:** Configurado en `proxy.conf.json`
+- **Backend API:** http://localhost:3000
 - **Endpoints:** Actualizados para usar `/api/adopcion-mascotas` (unificados)
 
 ## 📡 Conexión con Backend
 
-El frontend se conecta automáticamente al backend en puerto 3000 mediante proxy.
+El frontend se conecta directamente al backend en puerto 3000.
 
 ### **Endpoints utilizados:**
 ```
