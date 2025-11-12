@@ -82,6 +82,18 @@ export class MascotasPerdidasCrud implements OnInit {
     }
   }
 
+  formularioCompleto(): boolean {
+    return !!
+      (this.mascotaForm.name?.trim() &&
+       this.mascotaForm.species?.trim() &&
+       this.mascotaForm.breed?.trim() &&
+       this.mascotaForm.age &&
+       this.mascotaForm.descripcion?.trim() &&
+       this.mascotaForm.ubicacionPerdida?.trim() &&
+       this.mascotaForm.fechaPerdida &&
+       this.mascotaForm.contactoReporte?.trim());
+  }
+
   cancelarFormulario() {
     this.mostrarFormulario = false;
     this.editando = false;
