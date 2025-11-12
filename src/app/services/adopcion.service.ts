@@ -9,38 +9,38 @@ export class AdopcionService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api';
 
-  // === MASCOTAS ===
+  // === MASCOTAS ADOPCIÓN ===
   async getPets(): Promise<any[]> {
-    return await firstValueFrom(this.http.get<any[]>(`${this.apiUrl}/publico/mascotas`));
+    return await firstValueFrom(this.http.get<any[]>(`${this.apiUrl}/adopcion-mascotas`));
   }
 
   async getPetById(id: string): Promise<any> {
-    return await firstValueFrom(this.http.get<any>(`${this.apiUrl}/pets/${id}`));
+    return await firstValueFrom(this.http.get<any>(`${this.apiUrl}/adopcion-mascotas/${id}`));
   }
 
   async createPet(pet: any): Promise<any> {
-    return await firstValueFrom(this.http.post<any>(`${this.apiUrl}/pets`, pet));
+    return await firstValueFrom(this.http.post<any>(`${this.apiUrl}/adopcion-mascotas`, pet));
   }
 
   async updatePet(id: string, pet: any): Promise<any> {
-    return await firstValueFrom(this.http.put<any>(`${this.apiUrl}/pets/${id}`, pet));
+    return await firstValueFrom(this.http.put<any>(`${this.apiUrl}/adopcion-mascotas/${id}`, pet));
   }
 
   async deletePet(id: string): Promise<any> {
-    return await firstValueFrom(this.http.delete<any>(`${this.apiUrl}/pets/${id}`));
+    return await firstValueFrom(this.http.delete<any>(`${this.apiUrl}/adopcion-mascotas/${id}`));
   }
 
-  // === ADMIN MASCOTAS ===
+  // === MÉTODOS ADMIN (usando las mismas rutas) ===
   async createPetAdmin(pet: any): Promise<any> {
-    return await firstValueFrom(this.http.post<any>(`${this.apiUrl}/admin/mascotas`, pet));
+    return await firstValueFrom(this.http.post<any>(`${this.apiUrl}/adopcion-mascotas`, pet));
   }
 
   async updatePetAdmin(id: string, pet: any): Promise<any> {
-    return await firstValueFrom(this.http.put<any>(`${this.apiUrl}/admin/mascotas/${id}`, pet));
+    return await firstValueFrom(this.http.put<any>(`${this.apiUrl}/adopcion-mascotas/${id}`, pet));
   }
 
   async deletePetAdmin(id: string): Promise<any> {
-    return await firstValueFrom(this.http.delete<any>(`${this.apiUrl}/admin/mascotas/${id}`));
+    return await firstValueFrom(this.http.delete<any>(`${this.apiUrl}/adopcion-mascotas/${id}`));
   }
 
 
